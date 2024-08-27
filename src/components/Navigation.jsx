@@ -3,7 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa'
+import { useSelector } from 'react-redux';
+
 function Navigation() {
+  const cartitem= useSelector((state)=>state.cart)
   return (
 
     <Navbar className="bg-body-tertiary">
@@ -12,7 +15,7 @@ function Navigation() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} to={'/cart'}><h3 className=''><FaShoppingCart/></h3></Link>
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} to={'/cart'}><h3 className=''><FaShoppingCart/>{cartitem.length}</h3></Link>
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>
